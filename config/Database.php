@@ -6,16 +6,19 @@ class Database {
 	public function __construct(){
 		$this->con = mysqli_connect("localhost","root","","php_practice");
 		if($this->con){
-			echo "Connected";
+			echo "connected";
+			
+			
 		}
 		else {
 			echo "Error in Connection";
 		}
 
 	}
+
+	
 }
 
 
-$obj = new Database;
 
 ?>
