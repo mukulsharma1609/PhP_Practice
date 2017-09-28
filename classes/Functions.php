@@ -2,7 +2,6 @@
 	function login_user($email,$password,$conn)
 	{
 		$sql = "SELECT password FROM user where email='".$email."'";
-		echo $sql;
 		$result = $conn->query($sql);
 		if($result->num_rows>0)
 		{
@@ -10,17 +9,23 @@
 			{
 				if($row['password']==$password)
 				{
-					return "welcome";
+					echo '<script language="javascript">';
+					echo 'alert("Welcome")';
+					echo '</script>';
 				}
 				else
 				{
-					return "Incorrect Password";
+					echo '<script language="javascript">';
+					echo 'alert("Incorrect Password")';
+					echo '</script>';
 				}
 		}
 		}
 		else
 		{
-			return "user doesn't exist";
+			echo '<script language="javascript">';
+			echo 'alert("Incorrect Password")';
+			echo '</script>';
 		}
 	}
 ?>
