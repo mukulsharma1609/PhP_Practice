@@ -1,7 +1,6 @@
 <?php 
-
-include 'C:/xampp/htdocs/PhP_Practice/config/Database.php';
-include 'C:/xampp/htdocs/PhP_Practice/classes/Functions.php';
+include 'classes/Functions.php';
+$obj_login = new User();
 $e_empty ="";
 $p_empty="";
 $email = "";
@@ -10,8 +9,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 {
 	$email = $_POST['email'];
 	$password = $_POST['Password'];
-	$obj = new Database;
-	login_user($email,$password,$obj->con);
+	$res = $obj_login->login_user($email,$password);
+	if($res){
+		echo '<div class="alert alert-success fade in">';
+    	echo '<a href="#" class="close" data-dismiss="alert">&times;</a>';
+    	echo '<strong>Success!</strong> Your <a href="#" class="alert-link">To PHP - SAMPLE EXERCISE</a> has been sent successfully.';
+		echo '</div>';
+	}
+	else 
+	{
+		echo '<div class="alert alert-danger">';
+  		echo '<strong>ERROR: </strong>Something Went Wrong.';
+		echo '</div>';
+	}
 }
 ?>
 <DOCTYPE html>
@@ -46,6 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
       </label>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
+      <input type="button" class="btn btn-info btn-lg btn-primary btn-block"  value="Registers" onclick="location.href = 'sign_up.php';">
     </form>
   </div>
 </body>
