@@ -11,11 +11,8 @@ class Database {
 		else {
 			echo "Error in Connection";
 		}
-
 	}
 }
 
-
-$obj = new Database;
 
 ?>
